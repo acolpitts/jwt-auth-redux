@@ -9,7 +9,7 @@ module.exports = (env, argv) => ({
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'public')
   },
-  watch: true,
+  watch: argv.mode === 'production' ? false : true,
   module: {
     rules: [
       {
