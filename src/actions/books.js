@@ -1,5 +1,7 @@
 "use strict"
 
+import {DELETE_BOOK, POST_BOOK, UPDATE_BOOK} from "./types";
+
 /**
  * Adds an array of books to the store
  *
@@ -8,7 +10,7 @@
  */
 export const postBooks = (book) => {
   return {
-    type: "POST_BOOK",
+    type: POST_BOOK,
     payload: book
   }
 }
@@ -21,7 +23,7 @@ export const postBooks = (book) => {
  */
 export const deleteBook = (id) => {
   return {
-    type: "DELETE_BOOK",
+    type: DELETE_BOOK,
     payload: id
   }
 }
@@ -34,7 +36,7 @@ export const deleteBook = (id) => {
  */
 export const updateBook = (book) => {
   return {
-    type: "UPDATE_BOOK",
+    type: UPDATE_BOOK,
     payload: book
   }
 }

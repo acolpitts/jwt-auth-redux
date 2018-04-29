@@ -1,5 +1,7 @@
 "use strict";
 
+import {DELETE_BOOK, POST_BOOK, UPDATE_BOOK} from "../actions/types";
+
 /**
  * Manages Books state
  *
@@ -9,10 +11,10 @@
  */
 export const booksReducers = (state={books:[]}, action) => {
   switch (action.type) {
-    case "POST_BOOK":
+    case POST_BOOK:
       return {books: [...state.books, ...action.payload]}
       break
-    case "DELETE_BOOK":
+    case DELETE_BOOK:
       // create a copy of the ccurrent array of books
       const currentBookToDelete = [...state.books]
       // determine at which index to delete the book
@@ -25,7 +27,7 @@ export const booksReducers = (state={books:[]}, action) => {
       return {books: [...currentBookToDelete.slice(0, indexToDelete),
           ...currentBookToDelete.slice(indexToDelete + 1)]};
       break;
-    case "UPDATE_BOOK":
+    case UPDATE_BOOK:
       // Create a copy of the current array of books
       const currentBookToUpdate = [...state.books];
       // Determine at which index to update the book
