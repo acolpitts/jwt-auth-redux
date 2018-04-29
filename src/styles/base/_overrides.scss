@@ -1,0 +1,9 @@
+.row .col {
+  padding-left: 0;
+  padding-right: 0;
+  @include breakpoint(l) {
+    padding-left: 5px;
+    padding-right: 5px;
+
+  }
+}

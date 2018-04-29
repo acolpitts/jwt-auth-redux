@@ -1,0 +1,9 @@
+.books-list {
+  &__item {
+    margin-bottom: 10px;
+  }
+  &__item-content {
+    padding: 10px 20px;
+    background-color: color('blue-grey', 'lighten-5');
+  }
+}

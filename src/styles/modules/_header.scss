@@ -1,0 +1,16 @@
+.app-header {
+  .nav-wrapper {
+    background-color: color('grey', 'darken-3');
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .brand-logo i {
+    color: $primary-color;
+  }
+
+  i:hover {
+    color: $primary-color-light;
+
+  }
+}

@@ -1,0 +1,15 @@
+html, body {
+  margin: 0;
+}
+
+h1, h2, h3, h4, h5 {
+  margin-top: 0;
+}
+
+h1 {
+  font-size: 3em;
+
+  @include breakpoint(l) {
+    font-size: 3.25em;
+  }
+}

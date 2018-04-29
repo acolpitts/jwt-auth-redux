@@ -1,0 +1,23 @@
+$break-xlarge: 1201px;
+$break-large: 993px;
+$break-med: 601px;
+$break-small: 600px;
+
+/*********************
+BREAKPOINTS
+*********************/
+
+@mixin breakpoint($point) {
+  @if $point == xl {
+    @media (min-width: $break-xlarge) { @content ; }
+  }
+  @else if $point == l {
+    @media (min-width: $break-large) { @content ; }
+  }
+  @else if $point == m {
+    @media (min-width: $break-med) { @content ; }
+  }
+  @else if $point == s {
+    @media (max-width: $break-small)  { @content ; }
+  }
+}
