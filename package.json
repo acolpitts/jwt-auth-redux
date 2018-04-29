@@ -7,7 +7,7 @@
     "start": "nodemon index.js",
     "dev": "webpack-dev-server --hot --inline --progress --port 3000 --open",
     "build": "webpack --mode production",
-    "test": "mocha test/**/*.spec.js test/**/**/*.spec.js --recursive --compilers js:babel-register --require ./test/test_helper.js --require ignore-styles",
+    "test": "mocha test/**/*.spec.js test/**/**/*.spec.js --recursive -R min --compilers js:babel-register --require ./test/test_helper.js --require ignore-styles",
     "test:watch": "npm test -- --watch",
     "postinstall": "npm run build"
   },

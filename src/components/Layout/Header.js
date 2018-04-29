@@ -14,7 +14,7 @@ class Header extends Component {
 
   renderUserMenu() {
     if (this.props.authenticated) {
-      return <li><Link to="/dashboard"><i className="material-icons">view_module</i></Link></li>
+      return <li><Link to="/admin"><i className="material-icons">view_module</i></Link></li>
     }
   }
 
@@ -24,7 +24,7 @@ class Header extends Component {
         <nav className="app-nav">
           <div className="nav-wrapper">
             <Link to="/"><div className="brand-logo"><i className="material-icons">view_quilt</i>redux·store</div></Link>
-            <ul className="right hide-on-med-and-down">
+            <ul className="app-menu right">
               <li><Link to="/books"><i className="material-icons">search</i></Link></li>
               {this.renderUserMenu()}
               <li>{this.authButton()}</li>

@@ -1,7 +1,9 @@
 import React from 'react';
-import requireAuth from '../../containers/RequireAuthentication';
+import requireAuth from '../Containers/RequireAuthentication';
+import {connect} from "react-redux";
+import * as actions from "../../actions/authenticate";
 
-const Dashboard = () => {
+const AdminDashboard = () => {
   return (
     <div>
       <h1>This is a private dashboard!</h1>
@@ -25,4 +27,9 @@ const Dashboard = () => {
   )
 }
 
-export default requireAuth(Dashboard);
+
+const mapStateToPros = (state) => {
+  return { authenticated: state.authenticated }
+}
+
+export default connect(mapStateToPros, actions)(AdminDashboard);
