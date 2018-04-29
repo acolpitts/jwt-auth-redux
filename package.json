@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --hot --inline --progress --port 3000 --open",
+    "start": "nodemon index.js",
+    "dev": "webpack-dev-server --hot --inline --progress --port 3000 --open",
     "build": "webpack --mode production",
     "test": "echo \"Error: no test specified\" && exit 1",
     "postinstall-heroku": "npm run build"
@@ -18,6 +19,7 @@
     "html-webpack-plugin": "^3.2.0",
     "mini-css-extract-plugin": "^0.4.0",
     "node-sass": "^4.9.0",
+    "nodemon": "^1.17.3",
     "redux-logger": "^3.0.6",
     "rimraf": "^2.6.2",
     "sass-loader": "^7.0.1",
@@ -42,5 +44,8 @@
     "react-router-dom": "^4.2.2",
     "react-transition-group": "^2.3.1",
     "redux": "^4.0.0"
+  },
+  "engines": {
+    "node": "8.9.4"
   }
 }
