@@ -15,6 +15,7 @@ import reducers from './reducers';
 // ACTION CREATORS
 import { addToCart } from './actions/cart';
 import { postBooks, deleteBook, updateBook } from "./actions/books";
+import { authenticate } from './actions/authenticate';
 
 // COMPONENTS
 import App from './components/App';

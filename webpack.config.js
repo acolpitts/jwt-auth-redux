@@ -11,7 +11,8 @@ module.exports = (env, argv) => ({
   },
   devServer: {
     contentBase: './public',
-    //   port: 9001,
+    historyApiFallback: true,
+    //port: 9001,
     compress: true,
     hot: true,
     open: true
