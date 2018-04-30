@@ -2,12 +2,12 @@
 // REACT + REDUX
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter} from 'react-router-dom';
-import {createBrowserHistory} from 'history';
-
+import { Router} from 'react-router-dom';
+import reduxThunk from 'redux-thunk';
 import { Provider } from 'react-redux';
 import {applyMiddleware, createStore} from 'redux';
 import logger from 'redux-logger';
+import history from './history';
 
 // COMBINED REDUCERS
 import reducers from './reducers';
@@ -15,22 +15,19 @@ import reducers from './reducers';
 // ACTION CREATORS
 import { addToCart } from './actions/cart';
 import { postBooks, deleteBook, updateBook } from "./actions/books";
-import { authenticate } from './actions/authenticate';
 
 // COMPONENTS
 import App from './components/App';
 
 // Step 1:  Create middleware and the store
-const middleware = applyMiddleware(logger);
+const middleware = applyMiddleware(logger, reduxThunk);
 const store = createStore(reducers, middleware);
-
-const history = createBrowserHistory();
 
 ReactDOM.render((
   <Provider store={store}>
-    <BrowserRouter>
+    <Router history={history}>
       <App />
-    </BrowserRouter>
+    </Router>
   </Provider>
 ), document.querySelector('.app-root'));
 

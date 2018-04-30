@@ -4,7 +4,8 @@ import chai, { expect } from 'chai';
 import chaiJquery from 'chai-jquery';
 import React from 'react';
 import ReactDOM from 'react-dom'
-import { StaticRouter } from 'react-router-dom';
+import { StaticRouter } from 'react-router-dom'
+import history from '../src/history';
 import TestUtils from 'react-dom/test-utils';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';

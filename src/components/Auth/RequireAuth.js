@@ -3,20 +3,20 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 export default (ComposedComponent) => {
-  class Authentication extends Component {
+  class RequireAuth extends Component {
 
     static contextTypes = {
       router: PropTypes.object
     }
 
     componentWillMount() {
-      if (!this.props.authenticated) {
+      if (!this.props.auth.authenticated) {
         this.context.router.history.push('/');
       }
     }
 
     componentWillUpdate(nextProps) {
-      if (!nextProps.authenticated) {
+      if (!nextProps.auth.authenticated) {
         this.context.router.history.push('/');
       }
     }
@@ -27,8 +27,8 @@ export default (ComposedComponent) => {
   }
 
   const mapStateToProps = (state) => {
-    return { authenticated: state.authenticated };
+    return { auth: state.auth };
   }
 
-  return connect(mapStateToProps)(Authentication);
+  return connect(mapStateToProps)(RequireAuth);
 }

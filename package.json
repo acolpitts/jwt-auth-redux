@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js",
-    "dev": "webpack-dev-server --hot --inline --progress --port 3000 --open",
+    "dev": "webpack-dev-server --hot --inline --progress --port 8000 --open",
     "build": "webpack --mode production",
     "test": "mocha test/**/*.spec.js test/**/**/*.spec.js --recursive -R min --compilers js:babel-register --require ./test/test_helper.js --require ignore-styles",
     "test:watch": "npm test -- --watch",
@@ -43,13 +43,16 @@
     "webpack-uglify-js-plugin": "^1.1.9"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "express": "^4.16.3",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.2.2",
     "react-transition-group": "^2.3.1",
-    "redux": "^4.0.0"
+    "redux": "^4.0.0",
+    "redux-form": "^7.3.0",
+    "redux-thunk": "^2.2.0"
   },
   "engines": {
     "node": "8.9.4"

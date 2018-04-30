@@ -1,7 +1,5 @@
 import React from 'react';
-import requireAuth from '../Containers/RequireAuthentication';
 import {connect} from "react-redux";
-import * as actions from "../../actions/authenticate";
 
 const AdminDashboard = () => {
   return (
@@ -29,7 +27,7 @@ const AdminDashboard = () => {
 
 
 const mapStateToPros = (state) => {
-  return { authenticated: state.authenticated }
+  return { auth: state.auth }
 }
 
-export default connect(mapStateToPros, actions)(AdminDashboard);
+export default connect(mapStateToPros)(AdminDashboard);

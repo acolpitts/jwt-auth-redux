@@ -5,7 +5,7 @@ import '../styles/main.scss';
 
 // COMPONENTS
 import Header from './Layout/Header';
-import Main from './Containers/Main';
+import Main from './Layout/Main';
 import Sidebar from './Layout/SideBar';
 import Footer from "./Layout/Footer";
 

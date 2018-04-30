@@ -1,20 +1,30 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import * as actions from '../../actions/authenticate';
+import * as actions from '../../actions/auth'
 
 class Header extends Component {
   authButton() {
-    if (this.props.authenticated) {
-      return <div onClick={() => this.props.authenticate(false)}><a href="#"><i className="material-icons">account_circle</i></a></div>
+    if (this.props.auth.authenticated) {
+      return <div onClick={() => this.props.signoutUser()}><a href="#"><i className="material-icons">account_circle</i></a></div>
     }
-
-    return <div onClick={() => this.props.authenticate(true)}><a href="#"><i className="material-icons">menu</i></a></div>
+    return <Link to="/signin"><i className="material-icons">menu</i></Link>
   }
 
   renderUserMenu() {
-    if (this.props.authenticated) {
-      return <li><Link to="/admin"><i className="material-icons">view_module</i></Link></li>
+    if (this.props.auth.authenticated) {
+      return (
+        <ul className="app-menu right">
+          <li><Link to="/dashboard"><i className="material-icons">view_module</i></Link></li>
+          <li>{this.authButton()}</li>
+        </ul>
+      )
+    } else {
+      return (
+          <ul className="app-menu right">
+            <li>{this.authButton()}</li>
+          </ul>
+      )
     }
   }
 
@@ -24,11 +34,10 @@ class Header extends Component {
         <nav className="app-nav">
           <div className="nav-wrapper">
             <Link to="/"><div className="brand-logo"><i className="material-icons">view_quilt</i>redux·store</div></Link>
-            <ul className="app-menu right">
-              <li><Link to="/books"><i className="material-icons">search</i></Link></li>
+
               {this.renderUserMenu()}
-              <li>{this.authButton()}</li>
-            </ul>
+
+
           </div>
         </nav>
       </header>
@@ -37,7 +46,7 @@ class Header extends Component {
 }
 
 const mapStateToPros = (state) => {
-  return { authenticated: state.authenticated }
+  return { auth: state.auth }
 }
 
 export default connect(mapStateToPros, actions)(Header);
