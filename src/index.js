@@ -9,6 +9,9 @@ import {applyMiddleware, createStore} from 'redux';
 import logger from 'redux-logger';
 import history from './history';
 
+// ENVIRONMENT
+const env = process.env.NODE_ENV;
+
 // COMBINED REDUCERS
 import reducers from './reducers';
 
@@ -19,8 +22,13 @@ import { postBooks, deleteBook, updateBook } from "./actions/books";
 // COMPONENTS
 import App from './components/App';
 
+
 // Step 1:  Create middleware and the store
-const middleware = applyMiddleware(logger, reduxThunk);
+let middleware
+env === "production" ?
+  middleware = applyMiddleware(reduxThunk) :
+  middleware = applyMiddleware(logger, reduxThunk);
+
 const store = createStore(reducers, middleware);
 
 ReactDOM.render((
