@@ -1,7 +1,7 @@
 {
-  "name": "redux-app",
+  "name": "jwt-auth-redux",
   "version": "1.0.0",
-  "description": "",
+  "description": "Simple React+Redux client with JWT authentication",
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js",

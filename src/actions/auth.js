@@ -29,9 +29,9 @@ export const signinUser = ({ email, password }) => {
   }
 }
 
-export const signupUser = ({ email, password }) => {
+export const signupUser = ({ name, email, password }) => {
   return dispatch => {
-    axios.post(`${config.AUTH_API}/signup`, { email, password })
+    axios.post(`${config.AUTH_API}/signup`, { name, email, password })
       .then(response => {
         dispatch({ type: AUTH_USER });
         localStorage.setItem('token', response.data.token);

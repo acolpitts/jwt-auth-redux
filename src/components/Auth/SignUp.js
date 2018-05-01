@@ -6,6 +6,9 @@ import * as actions from '../../actions/auth';
 
 const validate = values => {
   const errors = {}
+  if (!values.name) {
+    errors.name = 'Required'
+  }
   if (!values.email) {
     errors.email = 'Required'
   } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
@@ -13,14 +16,6 @@ const validate = values => {
   }
   if (!values.password) {
     errors.password = 'Required'
-  }
-  if (!values.confirmPassword) {
-    errors.confirmPassword = 'Required'
-  }
-  if (values.password !== values.confirmPassword ) {
-    // wait to display this error until after first attemp at password confirmation
-    if (values.confirmPassword)
-      errors.confirmPassword = "Passwords must match"
   }
   return errors
 }
@@ -39,9 +34,9 @@ const renderField = ({ input, label, type, meta: {touched, error, warning}}) => 
 
 class SignUp extends Component {
 
-  handleFormSubmit({ email, password, confirmPassword }) {
+  handleFormSubmit({ name, email, password }) {
     // Call action creator to sign up the user!
-    this.props.signupUser({ email, password, confirmPassword });
+    this.props.signupUser({ name, email, password });
   }
 
   renderAlert() {
@@ -65,12 +60,12 @@ class SignUp extends Component {
         </div>
         <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))} className="col s10 offset-s1 l4">
           <br/>
+          <Field name="name" type="text" component={renderField} label="Name"/>
+          <br/>
           <Field name="email" type="email" component={renderField} label="Email"/>
           <br/>
           <Field name="password" type="password" component={renderField} label="Password"/>
           <br />
-          <Field name="confirmPassword" type="password" component={renderField} label="Confirm Password"/>
-          <br/>
           <div className="row">
             <button type="submit" className="btn btn-large light-green z-depth-0" disabled={submitting}>Sign Up</button>
           </div>
