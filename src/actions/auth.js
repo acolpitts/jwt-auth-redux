@@ -8,15 +8,10 @@ import {
   FETCH_MESSAGE
 } from './types';
 
-export function signinUser({ email, password }) {
-  return function(dispatch) {
-    // Set auth api based on env
-    let AUTH_API;
-    const env = process.env.NODE_ENV || 'development';
-    env === "production" ? AUTH_API = config.AUTH_API_PROD : AUTH_API = config.AUTH_API_DEV
-
+export const signinUser = ({ email, password }) => {
+  return dispatch => {
     // Submit email/password to the server
-    axios.post(`${AUTH_API}/signin`, { email, password })
+    axios.post(`${config.AUTH_API}/signin`, { email, password })
       .then(response => {
         // If request is good...
         // - Update state to indicate user is authenticated
@@ -34,16 +29,41 @@ export function signinUser({ email, password }) {
   }
 }
 
-export function signoutUser() {
+export const signupUser = ({ email, password }) => {
+  return dispatch => {
+    axios.post(`${config.AUTH_API}/signup`, { email, password })
+      .then(response => {
+        dispatch({ type: AUTH_USER });
+        localStorage.setItem('token', response.data.token);
+        history.push("/dashboard");
+      })
+      .catch(error => dispatch(authError(error.response.data.error)));
+  }
+}
+
+export const signoutUser = () => {
   localStorage.removeItem('token');
 
   return { type: UNAUTH_USER };
 }
 
-
-export function authError(error) {
+export const authError = (error) => {
   return {
     type: AUTH_ERROR,
     payload: error
   };
+}
+
+export const fetchMessage = () => {
+  return dispatch => {
+    axios.get(`${config.AUTH_API}`, {
+      headers: { authorization: localStorage.getItem('token') }
+    })
+      .then(response => {
+        dispatch({
+          type: FETCH_MESSAGE,
+          payload: response.data.message
+        })
+      })
+  }
 }

@@ -8,9 +8,7 @@ import { Provider } from 'react-redux';
 import {applyMiddleware, createStore} from 'redux';
 import logger from 'redux-logger';
 import history from './history';
-
-// ENVIRONMENT
-const env = process.env.NODE_ENV;
+import config from '../config';
 
 // COMBINED REDUCERS
 import reducers from './reducers';
@@ -21,15 +19,22 @@ import { postBooks, deleteBook, updateBook } from "./actions/books";
 
 // COMPONENTS
 import App from './components/App';
+import {AUTH_USER} from "./actions/types";
 
 
 // Step 1:  Create middleware and the store
 let middleware
-env === "production" ?
+config.ENV === "production" ?
   middleware = applyMiddleware(reduxThunk) :
   middleware = applyMiddleware(logger, reduxThunk);
 
-const store = createStore(reducers, middleware);
+const store = createStore(reducers, middleware)
+
+// If we have a token, consider the user to be signed in
+const token = localStorage.getItem('token');
+if (token) {
+  store.dispatch({ type: AUTH_USER });
+}
 
 ReactDOM.render((
   <Provider store={store}>

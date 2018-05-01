@@ -1,0 +1,8 @@
+.alert {
+  padding: 20px 35px;
+
+  &.alert-danger {
+    color: $color-white;
+    background-color: color('red', 'darken-2');
+  }
+}

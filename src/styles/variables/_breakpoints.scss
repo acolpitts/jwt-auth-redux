@@ -3,10 +3,9 @@ $break-large: 993px;
 $break-med: 601px;
 $break-small: 600px;
 
-/*********************
-BREAKPOINTS
-*********************/
-
+/*-----------------------------------------------------------------------------
+  Breakpoint Mixin
+------------------------------------------------------------------------------*/
 @mixin breakpoint($point) {
   @if $point == xl {
     @media (min-width: $break-xlarge) { @content ; }

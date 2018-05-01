@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { reduxForm, Field } from 'redux-form';
 import * as actions from '../../actions/auth';
@@ -35,7 +36,7 @@ class SignIn extends Component {
   renderAlert() {
     if (this.props.errorMessage) {
       return (
-        <div className="alert alert-danger red-text">
+        <div className="alert alert-danger">
           <strong>Oops!</strong> {this.props.errorMessage}
         </div>
       );
@@ -45,20 +46,23 @@ class SignIn extends Component {
   render() {
     const {handleSubmit, pristine, reset, submitting} = this.props
     return (
-      <div className="row">
-        <div className="col s12">
-          <br/>
-          {this.renderAlert()}
-        </div>
-      <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))} className="col s12">
-        <br/>
-        <Field name="email" type="email" component={renderField} label="Email"/>
-        <Field name="password" type="password" component={renderField} label="Password"/>
-        <div>
-          <br/>
-          <button type="submit" className="btn btn-large light-green z-depth-0" disabled={submitting}>Sign in</button>
-        </div>
-      </form>
+      <div>
+        {this.renderAlert()}
+        <section className="row">
+          <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))} className="col s10 offset-s1 l4 offset-l7">
+            <br/>
+            <Field name="email" type="email" component={renderField} label="Email"/>
+            <br/>
+            <Field name="password" type="password" component={renderField} label="Password"/>
+            <br/>
+            <div className="row">
+              <button type="submit" className="btn btn-large light-green z-depth-0" disabled={submitting}>Sign in</button>
+            </div>
+            <div className="row">
+              <Link to="/signup">Don't have an account? Sign up here</Link>
+            </div>
+          </form>
+        </section>
       </div>
     )
   }
