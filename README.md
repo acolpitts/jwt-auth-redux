@@ -2,10 +2,11 @@
 Simple React+Redux client with JWT authentication
 
 ### Prerequisits
-You will need to have a JWT authentication server running in order to authenticate the redux client. 
+You will need to have a JWT authentication api server running that returns the correct payload in order to authenticate the redux client. 
 
-#### JWT Authentication API 
-Node: [jwt-auth-node](https://github.com/acolpitts/jwt-auth-node)
+#### JWT Authentication API Server
+**Node:** [jwt-auth-node](https://github.com/acolpitts/jwt-auth-node)  
+**Rails:** [jwt-auth-rails](https://github.com/acolpitts/jwt-auth-rails)
 
 ### Getting Started
 
